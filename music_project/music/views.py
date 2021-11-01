@@ -1,6 +1,6 @@
+from django.http import response
 from django.http.response import Http404
 from django.shortcuts import render
-from rest_framework.serializers import Serializer
 from .models import Song
 from .serializers import SongSerializer
 from rest_framework.views import APIView
@@ -38,8 +38,8 @@ class SongDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk):
-        song = self.get_by_id(pk)
-        serializer = SongSerializer(song, data=request.data)
+        product = self.get_by_id(pk)
+        serializer = SongSerializer(product, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
